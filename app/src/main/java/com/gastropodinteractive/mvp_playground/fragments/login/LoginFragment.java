@@ -2,6 +2,7 @@ package com.gastropodinteractive.mvp_playground.fragments.login;
 
 
 import android.os.Bundle;
+import android.support.design.widget.TextInputEditText;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,7 +12,6 @@ import android.widget.Button;
 import com.gastropodinteractive.mvp_playground.R;
 import com.gastropodinteractive.mvp_playground.base.BaseFragment;
 import com.gastropodinteractive.mvp_playground.di.components.ActivityComponent;
-import com.gastropodinteractive.mvp_playground.main.MainActivity;
 
 import javax.inject.Inject;
 
@@ -29,8 +29,12 @@ public class LoginFragment extends BaseFragment implements ILoginMvpView {
 
     View v;
 
-    @BindView(R.id.login_btn_homepage)
-    Button btnToHomepage;
+    @BindView(R.id.login_txt_email)
+    TextInputEditText txtEmail;
+    @BindView(R.id.login_txt_password)
+    TextInputEditText txtPassword;
+    @BindView(R.id.login_btn_login)
+    Button btnLogin;
 
     public LoginFragment() {
         // Required empty public constructor
@@ -69,12 +73,9 @@ public class LoginFragment extends BaseFragment implements ILoginMvpView {
     }
 
     // Click Logic
-    @OnClick(R.id.login_btn_homepage)
-    void ToHomepage() {
-        if (getActivity() instanceof MainActivity) {
-            MainActivity activity = (MainActivity) getActivity();
-            activity.toHomepageDisplay();
-        }
+    @OnClick(R.id.login_btn_login)
+    public void LoginScript() {
+        mPresenter.Validator(txtEmail.getText().toString().trim(), txtPassword.getText().toString().trim());
     }
 
 }

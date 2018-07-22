@@ -11,4 +11,8 @@ public interface ILoginMvpPresenter<V extends ILoginMvpView> extends MvpPresente
 
     void onViewPrepared();
 
+    void Validator(String email, String password);
+
+    void LoginStart(String email, String password);
+
 }
