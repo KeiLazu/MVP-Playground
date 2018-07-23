@@ -28,7 +28,7 @@ task clean(type: Delete) {
 
 ext {
     // App dependencies
-    gsonVersion = '2.8.0'
+    gsonVersion = '2.8.5'
     calligraphyVersion = '2.2.0'
     glideVersion = '3.7.0'
 
@@ -36,7 +36,7 @@ ext {
 
     dagger2Version = '2.8'
     rxjava2Version = '2.0.6'
-    rxandroidVersion = '2.0.1'
+    rxandroidVersion = '2.0.2'
     butterKnifeVersion = '8.8.1'
     greenDaoVersion = '3.2.0'
     placeholderviewVersion = '0.6.1'

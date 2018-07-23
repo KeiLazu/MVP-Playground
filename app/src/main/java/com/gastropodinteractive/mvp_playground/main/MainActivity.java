@@ -1,5 +1,6 @@
 package com.gastropodinteractive.mvp_playground.main;
 
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -52,7 +53,12 @@ public class MainActivity extends BaseActivity implements MainMvpView {
     @Override
     public void toLoginDisplay() {
         getSupportFragmentManager().beginTransaction()
-                .add(R.id.main_fragment_holder, LoginFragment.newInstance(), LoginFragment.class.getSimpleName())
+                .replace(R.id.main_fragment_holder, LoginFragment.newInstance(), LoginFragment.class.getSimpleName())
                 .commit();
     }
+
+//    @Override
+//    public void replaceFragment(int layout, Fragment fragment) {
+//
+//    }
 }

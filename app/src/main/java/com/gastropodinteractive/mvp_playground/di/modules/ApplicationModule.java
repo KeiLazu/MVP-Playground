@@ -3,7 +3,13 @@ package com.gastropodinteractive.mvp_playground.di.modules;
 import android.app.Application;
 import android.content.Context;
 
+import com.gastropodinteractive.mvp_playground.data.DataManager;
+import com.gastropodinteractive.mvp_playground.data.IDataManager;
+import com.gastropodinteractive.mvp_playground.data.services.ApiTodolist;
+import com.gastropodinteractive.mvp_playground.data.services.IApiTodolist;
 import com.gastropodinteractive.mvp_playground.di.ApplicationContext;
+
+import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
@@ -31,6 +37,18 @@ public class ApplicationModule {
     @Provides
     Application provideApplication() {
         return mApplication;
+    }
+
+    @Provides
+    @Singleton
+    IDataManager provideIDataManager(DataManager dataManager) {
+        return dataManager;
+    }
+
+    @Provides
+    @Singleton
+    IApiTodolist provideIApiTodolist (ApiTodolist apiTodolist){
+        return apiTodolist;
     }
 
 }

@@ -2,16 +2,19 @@ package com.gastropodinteractive.mvp_playground.fragments.login;
 
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputEditText;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.gastropodinteractive.mvp_playground.R;
 import com.gastropodinteractive.mvp_playground.base.BaseFragment;
 import com.gastropodinteractive.mvp_playground.di.components.ActivityComponent;
+import com.gastropodinteractive.mvp_playground.main.MainActivity;
 
 import javax.inject.Inject;
 
@@ -78,4 +81,12 @@ public class LoginFragment extends BaseFragment implements ILoginMvpView {
         mPresenter.Validator(txtEmail.getText().toString().trim(), txtPassword.getText().toString().trim());
     }
 
+    @Override
+    public void toHomepage() {
+        if (getActivity() instanceof MainActivity) {
+            MainActivity activity = (MainActivity) getActivity();
+            activity.toHomepageDisplay();
+        }
+
+    }
 }

@@ -4,7 +4,9 @@ import android.content.Context;
 import android.text.TextUtils;
 import android.widget.Toast;
 
+import com.gastropodinteractive.mvp_playground.R;
 import com.gastropodinteractive.mvp_playground.base.BasePresenter;
+import com.gastropodinteractive.mvp_playground.fragments.homepage.HomepageFragment;
 
 import javax.inject.Inject;
 
@@ -37,5 +39,6 @@ public class LoginPresenter<V extends ILoginMvpView> extends BasePresenter<V> im
     @Override
     public void LoginStart(String email, String password) {
         getMvpView().showMessage("Welcome " + email);
+        getMvpView().toHomepage();
     }
 }

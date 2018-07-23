@@ -4,6 +4,8 @@ import android.app.Application;
 import android.content.Context;
 
 import com.gastropodinteractive.mvp_playground.MvpApp;
+import com.gastropodinteractive.mvp_playground.data.DataManager;
+import com.gastropodinteractive.mvp_playground.data.IDataManager;
 import com.gastropodinteractive.mvp_playground.di.ApplicationContext;
 import com.gastropodinteractive.mvp_playground.di.modules.ApplicationModule;
 
@@ -26,5 +28,7 @@ public interface ApplicationComponent {
     Context context();
 
     Application application();
+
+    IDataManager getDatamanager();
 
 }
