@@ -2,6 +2,8 @@ package com.gastropodinteractive.mvp_playground.base;
 
 import com.gastropodinteractive.mvp_playground.data.DataManager;
 import com.gastropodinteractive.mvp_playground.data.IDataManager;
+import com.gastropodinteractive.mvp_playground.utils.rx.ISchedulerProvider;
+import com.gastropodinteractive.mvp_playground.utils.rx.SchedulerProvider;
 
 import javax.inject.Inject;
 
@@ -16,17 +18,24 @@ public class BasePresenter<V extends MvpView> implements MvpPresenter<V> {
     private V mMvpView;
 
     private final IDataManager mIDataManager;
+    private final ISchedulerProvider mISchedulerProvider;
     private final CompositeDisposable mCompositeDisposable;
 
     @Inject
     public BasePresenter(IDataManager iDataManager,
+                         ISchedulerProvider iSchedulerProvider,
                          CompositeDisposable compositeDisposable) {
         this.mIDataManager = iDataManager;
+        this.mISchedulerProvider = iSchedulerProvider;
         this.mCompositeDisposable = compositeDisposable;
     }
 
     public IDataManager getIDataManager() {
         return mIDataManager;
+    }
+
+    public ISchedulerProvider getISchedulerProvider() {
+        return mISchedulerProvider;
     }
 
     public CompositeDisposable getCompositeDisposable() {

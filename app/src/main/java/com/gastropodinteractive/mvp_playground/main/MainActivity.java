@@ -11,6 +11,8 @@ import com.gastropodinteractive.mvp_playground.fragments.login.LoginFragment;
 
 import javax.inject.Inject;
 
+import butterknife.ButterKnife;
+
 public class MainActivity extends BaseActivity implements MainMvpView {
 
     @Inject
@@ -22,7 +24,7 @@ public class MainActivity extends BaseActivity implements MainMvpView {
         setContentView(R.layout.activity_main);
 
         getActivityComponent().inject(this);
-
+        setUnBinder(ButterKnife.bind(this));
         mPresenter.onAttach(this);
 
         showInitialFragment();

@@ -6,9 +6,13 @@ import android.widget.Toast;
 
 import com.gastropodinteractive.mvp_playground.R;
 import com.gastropodinteractive.mvp_playground.base.BasePresenter;
+import com.gastropodinteractive.mvp_playground.data.IDataManager;
 import com.gastropodinteractive.mvp_playground.fragments.homepage.HomepageFragment;
+import com.gastropodinteractive.mvp_playground.utils.rx.ISchedulerProvider;
 
 import javax.inject.Inject;
+
+import io.reactivex.disposables.CompositeDisposable;
 
 /**
  * Created by Kei Lazu on 7/21/2018
@@ -17,7 +21,8 @@ import javax.inject.Inject;
 public class LoginPresenter<V extends ILoginMvpView> extends BasePresenter<V> implements ILoginMvpPresenter<V> {
 
     @Inject
-    public LoginPresenter() {
+    public LoginPresenter(IDataManager iDataManager, ISchedulerProvider iSchedulerProvider, CompositeDisposable compositeDisposable) {
+        super(iDataManager, iSchedulerProvider, compositeDisposable);
     }
 
     @Override

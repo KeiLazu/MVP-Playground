@@ -7,6 +7,7 @@ import com.gastropodinteractive.mvp_playground.data.services.model.GetTodolist;
 import com.gastropodinteractive.mvp_playground.di.ApplicationContext;
 
 import javax.inject.Inject;
+import javax.inject.Singleton;
 
 import io.reactivex.Single;
 
@@ -14,6 +15,8 @@ import io.reactivex.Single;
  * Created by Kei Lazu on 7/24/2018
  * check https://github.com/KeiLazu for more
  */
+
+@Singleton
 public class DataManager implements IDataManager {
 
     private final Context mContext;

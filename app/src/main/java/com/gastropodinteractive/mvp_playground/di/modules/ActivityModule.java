@@ -14,9 +14,12 @@ import com.gastropodinteractive.mvp_playground.fragments.login.LoginPresenter;
 import com.gastropodinteractive.mvp_playground.main.MainMvpPresenter;
 import com.gastropodinteractive.mvp_playground.main.MainMvpView;
 import com.gastropodinteractive.mvp_playground.main.MainPresenter;
+import com.gastropodinteractive.mvp_playground.utils.rx.ISchedulerProvider;
+import com.gastropodinteractive.mvp_playground.utils.rx.SchedulerProvider;
 
 import dagger.Module;
 import dagger.Provides;
+import io.reactivex.disposables.CompositeDisposable;
 
 /**
  * Created by Kei Lazu on 7/16/2018
@@ -41,6 +44,16 @@ public class ActivityModule {
     @Provides
     AppCompatActivity provideActivity() {
         return mActivity;
+    }
+
+    @Provides
+    CompositeDisposable provideCompositeDisposable() {
+        return new CompositeDisposable();
+    }
+
+    @Provides
+    ISchedulerProvider provideSchedulerProvider() {
+        return new SchedulerProvider();
     }
 
     @Provides
