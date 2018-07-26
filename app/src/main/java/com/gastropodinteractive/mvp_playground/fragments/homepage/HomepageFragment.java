@@ -3,15 +3,23 @@ package com.gastropodinteractive.mvp_playground.fragments.homepage;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.gastropodinteractive.mvp_playground.R;
+import com.gastropodinteractive.mvp_playground.adapters.TodoAdapter;
 import com.gastropodinteractive.mvp_playground.base.BaseFragment;
+import com.gastropodinteractive.mvp_playground.data.services.datamodel.Todolist;
+import com.gastropodinteractive.mvp_playground.data.services.model.GetTodolist;
 import com.gastropodinteractive.mvp_playground.di.components.ActivityComponent;
 import com.gastropodinteractive.mvp_playground.main.MainActivity;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -27,10 +35,16 @@ public class HomepageFragment extends BaseFragment implements IHomepageMvpView {
     @Inject
     IHomepageMvpPresenter<IHomepageMvpView> mPresenter;
 
+    @Inject
+    TodoAdapter todoAdapter;
+
+    @Inject
+    LinearLayoutManager llmTodo;
+
     View v;
 
-    @BindView(R.id.homepage_btn_login)
-    Button btnLogin;
+    @BindView(R.id.homepage_rv_todo)
+    RecyclerView rvTodo;
 
     public HomepageFragment() {
         // Required empty public constructor
@@ -59,21 +73,22 @@ public class HomepageFragment extends BaseFragment implements IHomepageMvpView {
 
     @Override
     protected void setUp(View view) {
+        llmTodo.setOrientation(LinearLayoutManager.VERTICAL);
+        rvTodo.setLayoutManager(llmTodo);
+        rvTodo.setItemAnimator(new DefaultItemAnimator());
+        rvTodo.setAdapter(todoAdapter);
+
         mPresenter.onViewPrepared();
+    }
+
+    @Override
+    public void updateTodo(List<Todolist> todolist) {
+        todoAdapter.addTodolist(todolist);
     }
 
     @Override
     public void onDestroyView() {
         mPresenter.onDetach();
         super.onDestroyView();
-    }
-
-    @Override
-    @OnClick(R.id.homepage_btn_login)
-    public void toLoginDisplay() {
-        if (getActivity() instanceof MainActivity) {
-            MainActivity activity = (MainActivity) getActivity();
-            activity.toLoginDisplay();
-        }
     }
 }

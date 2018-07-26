@@ -33,13 +33,13 @@ public class HomepagePresenter<V extends IHomepageMvpView> extends BasePresenter
                     @Override
                     public void accept(GetTodolist getTodolist) throws Exception {
                         Log.i("getTodolist", "todolist>\n" + getTodolist.toString());
-                        getMvpView().showMessage("Clear");
+                        getMvpView().updateTodo(getTodolist.getTodolist());
                     }
                 }, new Consumer<Throwable>() {
                     @Override
                     public void accept(Throwable throwable) throws Exception {
                         throwable.printStackTrace();
-                        getMvpView().showMessage("Not Clear");
+                        getMvpView().showMessage("ErrCode: HP-OVP42");
                     }
                 }));
     }

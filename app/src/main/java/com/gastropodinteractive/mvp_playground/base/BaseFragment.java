@@ -1,5 +1,6 @@
 package com.gastropodinteractive.mvp_playground.base;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -8,6 +9,8 @@ import android.support.v4.app.Fragment;
 import android.view.View;
 
 import com.gastropodinteractive.mvp_playground.di.components.ActivityComponent;
+
+import javax.inject.Inject;
 
 import butterknife.Unbinder;
 
@@ -19,6 +22,9 @@ public abstract class BaseFragment extends Fragment implements MvpView {
 
     private BaseActivity mActivity;
     private Unbinder mUnBinder;
+
+//    @Inject
+//    private Dialog dialog;
 
     public BaseActivity getBaseActivity() {return mActivity;}
 
@@ -56,6 +62,17 @@ public abstract class BaseFragment extends Fragment implements MvpView {
     }
 
     protected abstract void setUp(View view);
+
+//    @Override
+//    public void showLoading() {
+//        hideLoading();
+//
+//    }
+//
+//    @Override
+//    public void hideLoading() {
+//
+//    }
 
     @Override
     public void showMessage(String message) {

@@ -9,6 +9,10 @@ import android.support.v4.app.Fragment;
  */
 public interface MvpView {
 
+//    void showLoading();
+//
+//    void hideLoading();
+
     void showMessage(String message);
 
 //    void replaceFragment(@IdRes int layout, Fragment fragment);
