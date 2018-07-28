@@ -1,9 +1,11 @@
 package com.gastropodinteractive.mvp_playground.fragments.homepage;
 
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
 import com.gastropodinteractive.mvp_playground.base.BasePresenter;
 import com.gastropodinteractive.mvp_playground.data.IDataManager;
+import com.gastropodinteractive.mvp_playground.data.services.datamodel.Todolist;
 import com.gastropodinteractive.mvp_playground.data.services.model.GetTodolist;
 import com.gastropodinteractive.mvp_playground.utils.rx.ISchedulerProvider;
 
@@ -43,4 +45,10 @@ public class HomepagePresenter<V extends IHomepageMvpView> extends BasePresenter
                     }
                 }));
     }
+
+    @Override
+    public void toTodoDetail(Todolist todolist) {
+        getMvpView().toTodoDetail(getGson().toJson(todolist));
+    }
+
 }

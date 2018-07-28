@@ -23,7 +23,7 @@ import butterknife.ButterKnife;
  */
 public class TodoAdapter extends RecyclerView.Adapter<BaseViewHolder> {
 
-    List<Todolist> todolist;
+    private List<Todolist> todolist;
 
     public TodoAdapter(List<Todolist> todolist) {
         this.todolist = todolist;
@@ -51,6 +51,13 @@ public class TodoAdapter extends RecyclerView.Adapter<BaseViewHolder> {
             return todolist.size();
         else
             return 0;
+    }
+
+    public Todolist getTodolistInPosition(int position) {
+        if (todolist != null)
+            return todolist.get(position);
+        else
+            return null;
     }
 
     public class ViewHolder extends BaseViewHolder {

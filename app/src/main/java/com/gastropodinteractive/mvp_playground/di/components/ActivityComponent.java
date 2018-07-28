@@ -4,6 +4,7 @@ import com.gastropodinteractive.mvp_playground.di.PerActivity;
 import com.gastropodinteractive.mvp_playground.di.modules.ActivityModule;
 import com.gastropodinteractive.mvp_playground.fragments.homepage.HomepageFragment;
 import com.gastropodinteractive.mvp_playground.fragments.login.LoginFragment;
+import com.gastropodinteractive.mvp_playground.fragments.tododetail.TodoDetailFragment;
 import com.gastropodinteractive.mvp_playground.main.MainActivity;
 
 import dagger.Component;
@@ -21,5 +22,7 @@ public interface ActivityComponent {
     void inject(HomepageFragment fragment);
 
     void inject(LoginFragment fragment);
+
+    void inject(TodoDetailFragment fragment);
 
 }

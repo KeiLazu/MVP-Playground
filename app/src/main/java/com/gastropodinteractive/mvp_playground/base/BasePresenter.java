@@ -4,6 +4,8 @@ import com.gastropodinteractive.mvp_playground.data.DataManager;
 import com.gastropodinteractive.mvp_playground.data.IDataManager;
 import com.gastropodinteractive.mvp_playground.utils.rx.ISchedulerProvider;
 import com.gastropodinteractive.mvp_playground.utils.rx.SchedulerProvider;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import javax.inject.Inject;
 
@@ -40,6 +42,14 @@ public class BasePresenter<V extends MvpView> implements MvpPresenter<V> {
 
     public CompositeDisposable getCompositeDisposable() {
         return mCompositeDisposable;
+    }
+
+    final private GsonBuilder builder = new GsonBuilder().excludeFieldsWithoutExposeAnnotation();
+    final private Gson gson = builder.create();
+
+    @Override
+    public Gson getGson() {
+        return gson;
     }
 
     @Override

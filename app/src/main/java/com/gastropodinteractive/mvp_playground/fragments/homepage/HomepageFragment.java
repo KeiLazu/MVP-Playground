@@ -18,6 +18,8 @@ import com.gastropodinteractive.mvp_playground.data.services.datamodel.Todolist;
 import com.gastropodinteractive.mvp_playground.data.services.model.GetTodolist;
 import com.gastropodinteractive.mvp_playground.di.components.ActivityComponent;
 import com.gastropodinteractive.mvp_playground.main.MainActivity;
+import com.gastropodinteractive.mvp_playground.utils.ClickListener;
+import com.gastropodinteractive.mvp_playground.utils.RecyclerTouchListener;
 
 import java.util.List;
 
@@ -30,7 +32,7 @@ import butterknife.OnClick;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class HomepageFragment extends BaseFragment implements IHomepageMvpView {
+public class HomepageFragment extends BaseFragment implements IHomepageMvpView, ClickListener {
 
     @Inject
     IHomepageMvpPresenter<IHomepageMvpView> mPresenter;
@@ -77,6 +79,7 @@ public class HomepageFragment extends BaseFragment implements IHomepageMvpView {
         rvTodo.setLayoutManager(llmTodo);
         rvTodo.setItemAnimator(new DefaultItemAnimator());
         rvTodo.setAdapter(todoAdapter);
+        rvTodo.addOnItemTouchListener(new RecyclerTouchListener(getContext(), rvTodo, this));
 
         mPresenter.onViewPrepared();
     }
@@ -87,8 +90,26 @@ public class HomepageFragment extends BaseFragment implements IHomepageMvpView {
     }
 
     @Override
+    public void toTodoDetail(String todolistJson) {
+        if (getActivity() instanceof MainActivity) {
+            MainActivity activity = (MainActivity) getActivity();
+            activity.toTodoDetailDisplay(todolistJson);
+        }
+    }
+
+    @Override
     public void onDestroyView() {
         mPresenter.onDetach();
         super.onDestroyView();
+    }
+
+    @Override
+    public void onClick(View view, int position) {
+        mPresenter.toTodoDetail(todoAdapter.getTodolistInPosition(position));
+    }
+
+    @Override
+    public void onLongClick(View view, int position) {
+
     }
 }

@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 
 import com.gastropodinteractive.mvp_playground.adapters.TodoAdapter;
 import com.gastropodinteractive.mvp_playground.data.services.datamodel.Todolist;
@@ -16,11 +17,17 @@ import com.gastropodinteractive.mvp_playground.fragments.homepage.IHomepageMvpVi
 import com.gastropodinteractive.mvp_playground.fragments.login.ILoginMvpPresenter;
 import com.gastropodinteractive.mvp_playground.fragments.login.ILoginMvpView;
 import com.gastropodinteractive.mvp_playground.fragments.login.LoginPresenter;
+import com.gastropodinteractive.mvp_playground.fragments.tododetail.ITodoDetailPresenter;
+import com.gastropodinteractive.mvp_playground.fragments.tododetail.ITodoDetailView;
+import com.gastropodinteractive.mvp_playground.fragments.tododetail.TodoDetailPresenter;
 import com.gastropodinteractive.mvp_playground.main.MainMvpPresenter;
 import com.gastropodinteractive.mvp_playground.main.MainMvpView;
 import com.gastropodinteractive.mvp_playground.main.MainPresenter;
+import com.gastropodinteractive.mvp_playground.utils.ClickListener;
+import com.gastropodinteractive.mvp_playground.utils.RecyclerTouchListener;
 import com.gastropodinteractive.mvp_playground.utils.rx.ISchedulerProvider;
 import com.gastropodinteractive.mvp_playground.utils.rx.SchedulerProvider;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 
@@ -81,6 +88,11 @@ public class ActivityModule {
         return presenter;
     }
 
+    @Provides
+    ITodoDetailPresenter<ITodoDetailView> provideTodoDetailPresenter(TodoDetailPresenter<ITodoDetailView> presenter) {
+        return presenter;
+    }
+
     // ---------------- Adapters
 
     @Provides
@@ -96,10 +108,5 @@ public class ActivityModule {
     }
 
     // ---------------- Utils
-
-//    @Provides
-//    Dialog provideDialog(AppCompatActivity activity) {
-//        return new Dialog(activity);
-//    }
 
 }

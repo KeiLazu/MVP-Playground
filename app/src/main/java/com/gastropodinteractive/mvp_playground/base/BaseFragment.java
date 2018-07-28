@@ -9,6 +9,8 @@ import android.support.v4.app.Fragment;
 import android.view.View;
 
 import com.gastropodinteractive.mvp_playground.di.components.ActivityComponent;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import javax.inject.Inject;
 

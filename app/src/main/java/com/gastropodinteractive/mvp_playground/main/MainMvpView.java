@@ -1,6 +1,7 @@
 package com.gastropodinteractive.mvp_playground.main;
 
 import com.gastropodinteractive.mvp_playground.base.MvpView;
+import com.gastropodinteractive.mvp_playground.data.services.datamodel.Todolist;
 
 /**
  * Created by Kei Lazu on 7/17/2018
@@ -13,5 +14,7 @@ public interface MainMvpView extends MvpView {
     void toHomepageDisplay();
 
     void toLoginDisplay();
+
+    void toTodoDetailDisplay(String todolistJson);
 
 }

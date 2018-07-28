@@ -14,4 +14,6 @@ public interface IHomepageMvpView extends MvpView {
 
     void updateTodo(List<Todolist> todolist);
 
+    void toTodoDetail(String todolistJson);
+
 }
